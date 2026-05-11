@@ -4,7 +4,8 @@
 #   ./run.sh               # start mining (GPU)
 #   ./run.sh --engine cpu  # start mining with CPU
 
-cd "$(dirname "$0")"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR"
 
 # Load env vars from .env
 if [ -f .env ]; then
