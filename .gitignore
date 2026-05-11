@@ -1,0 +1,32 @@
+# Secrets
+.env
+.env
+*.key
+*.pem
+
+# Runtime logs/state
+*.log
+nohup.out
+*.pid
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Build outputs
+gpu-miner.exe
+gpu-miner
+*.o
+*.obj
+*.out
+
+# Python cache (if any)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor/system files
+.DS_Store
+.idea/
+.vscode/

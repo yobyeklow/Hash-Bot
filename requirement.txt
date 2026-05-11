@@ -1,0 +1,44 @@
+# ┌ whitepaper v0.1 · single page · read it on-chain A quiet primitive returns. 
+Proof of work, in a browser tab. HASH is an ERC-20 on Ethereum mainnet. Single 
+immutable contract: ERC20 + Uniswap V4 hook + PoW miner. It does not migrate. 
+There is no v2, no fork, no successor token. The contract that exists is the 
+contract. HASH is mined. The contract is the issuer. No team treasury, no 
+premine, no foundation allocation, no insider round. The schedule is Bitcoin's; 
+the smart contract enforces it. Mining converts CPU cycles into supply. A miner 
+submits a keccak256 preimage below the current difficulty target. The contract 
+verifies, mints, halves on schedule, retargets every 2,016 mints. What hash 
+power is to Bitcoin, the browser tab is to HASH. Both convert outside-system 
+effort into inside-system supply via a transparent rule. One runs in warehouses.
+ One runs in a tab. Keccak256 gates issuance. Grover's algorithm reduces hash-
+preimage search by a square root — not a break. Doubling the difficulty closes 
+the gap. Shor's has no purchase here; there are no elliptic curves inside the 
+puzzle. SPHINCS-minus / FORS — the signature scheme Vitalik is integrating for 
+Ethereum's post-quantum future — sits on the same primitive. Mining HASH is 
+mining the cryptographic floor of the chain. challenge = keccak256(chainId ‖ 
+contract ‖ miner ‖ epoch) valid iff keccak256(challenge ‖ nonce) < 
+currentDifficulty four properties keep it hard to game - Challenges are bound to
+ the miner's address. Solutions cannot be stolen from the mempool. - Epochs 
+rotate every 100 blocks (~20 min). Pre-computed solutions expire. - Each (miner,
+ nonce, epoch) tuple mints once. Replay is impossible. - Ten mints per block, 
+hard. No bursts. reward = BASE_REWARD >> era, where era = totalMints / 100,000. 
+Base reward is 100 HASH. era 1 100.00 HASH/mint 10,000,000 HASH era 2 50.00 
+HASH/mint 5,000,000 HASH era 3 25.00 HASH/mint 2,500,000 HASH era 4 12.50 
+HASH/mint 1,250,000 HASH era 5+ 6.25 HASH/mint 150,000 HASH (partial → cap) Cap 
+is 21,000,000. Mining stops when reached. At the 1-mint-per-minute target, full 
+distribution takes ~290 days. Every 2,016 mints, the contract retargets: 
+next_target = old_target × (actual_blocks / expected_blocks) Clamped to ±4× per 
+period. The formula is Bitcoin's. Fast mining tightens the target, slow mining 
+loosens it. The global rate converges to 1 mint per minute regardless of how 
+many tabs are open. Genesis closes when 1,050,000 HASH is sold at 0.01 ETH per 
+1,000 HASH (max 5,000 HASH per tx). Anyone then callsseedPool(). The contract 
+atomically initializes a Uniswap V4 ETH/HASH pool, deposits the raised 10.5 ETH 
+and a matched 1,050,000 HASH as a single full-range position, and locks it by 
+exposing no public path to remove. V4 runs the swap math. - total - 21,000,000 
+HASH - genesis · 5% - 1,050,000 HASH @ $0.03 fixed - lp side · 5% - 1,050,000 
+HASH (locked in V4) - mining · 90% - 18,900,000 HASH (PoW, halvings) - team / vc
+ / airdrop - 0 One Solidity file. One constructor call. The contract address is 
+mined via CREATE2 to encode the V4 hook permission bits (lower 14 bits =0x20CC).
+ No proxy. No upgrade. No admin pause. Noselfdestruct. If everyone who shipped 
+this disappeared tonight, the contract would run tomorrow against the same 
+rules, the same difficulty, and the same prices. That is what we mean by "no 
+operator." That is the feature.

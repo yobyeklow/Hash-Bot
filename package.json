@@ -1,0 +1,18 @@
+{
+  "name": "eth-pow-miner",
+  "version": "1.0.0",
+  "description": "CLI application that mines an Ethereum smart contract using Proof-of-Work with GPU (CUDA) acceleration or CPU fallback",
+  "main": "miner.js",
+  "scripts": {
+    "start": "node miner.js",
+    "mine": "node miner.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "ethers": "^6.13.1",
+    "js-sha3": "^0.9.3"
+  },
+  "devDependencies": {},
+  "keywords": ["ethereum", "pow", "miner", "cuda", "gpu"],
+  "license": "MIT"
+}
