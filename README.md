@@ -1,4 +1,4 @@
-# Ethereum PoW GPU Miner
+# BNB PoW GPU Miner
 
 A CLI application that mines a specific Ethereum smart contract using Proof-of-Work (Keccak-256) with GPU (OpenCL) acceleration or CPU fallback.
 
